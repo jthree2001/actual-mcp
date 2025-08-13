@@ -17,7 +17,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
     "watch": "tsc --watch",
-    "inspector": "npx @modelcontextprotocol/inspector -e ACTUAL_SERVER_URL=$ACTUAL_SERVER_URL -e ACTUAL_PASSWORD=$ACTUAL_PASSWORD -e ACTUAL_BUDGET_SYNC_ID=$ACTUAL_BUDGET_SYNC_ID node build/index.js",
+    "inspector": "npx @modelcontextprotocol/inspector -e ACTUAL_SERVER_URL=$ACTUAL_SERVER_URL -e ACTUAL_PASSWORD=$ACTUAL_PASSWORD -e ACTUAL_BUDGET_SYNC_ID=$ACTUAL_BUDGET_SYNC_ID -e ACTUAL_ENC_PASSWORD=$ACTUAL_ENC_PASSWORD node build/index.js",
     "start": "tsx src/index.ts",
     "test": "npm run test:unit",
     "test:unit": "vitest run",

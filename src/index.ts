@@ -159,6 +159,11 @@ async function main(): Promise<void> {
     console.error('If your server requires authentication, initialization will fail.');
   }
 
+  if (!process.env.ACTUAL_ENC_PASSWORD) {
+    console.error('Note: ACTUAL_ENC_PASSWORD is not set.');
+    console.error('If your budget file is encrypted, initialization will fail.');
+  }
+
   if (useSse) {
     const app = express();
     app.use(express.json());

@@ -138,7 +138,7 @@ Add the following to your configuration...
 {
   "mcpServers": {
     "actualBudget": {
-      "command": "node",
+      "command": "npx",
       "args": ["-y", "actual-mcp", "--enable-write"],
       "env": {
         "ACTUAL_DATA_DIR": "path/to/your/data",
@@ -161,7 +161,8 @@ Add the following to your configuration...
       "env": {
         "ACTUAL_DATA_DIR": "path/to/your/data",
         "ACTUAL_PASSWORD": "your-password",
-        "ACTUAL_SERVER_URL": "http://your-actual-server.com",
+        "ACTUAL_SERVER_URL": "https://your-actual-server.com",
+        "ACTUAL_ENC_PASSWORD": "your-budget-password",
         "ACTUAL_BUDGET_SYNC_ID": "your-budget-id"
       }
     }
@@ -191,6 +192,14 @@ Add the following to your configuration...
         "sstefanov/actual-mcp:latest",
         "--enable-write"
       ]
+      "args": ["run", "-it", "--rm", "-p", "3000:3000", "sstefanov/actual-mcp:latest"],
+      "env": {
+        "ACTUAL_DATA_DIR": "/path/to/your/actual/data",
+        "ACTUAL_PASSWORD": "your-password",
+        "ACTUAL_ENC_PASSWORD": "your-budget-password",
+        "ACTUAL_SERVER_URL": "https://your-actual-server.com",
+        "ACTUAL_BUDGET_SYNC_ID": "your-budget-id"
+      }
     }
   }
 }
