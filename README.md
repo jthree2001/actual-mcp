@@ -179,10 +179,12 @@ Add the following to your configuration...
       "command": "docker",
       "args": [
         "run",
-        "-i",
+        "-it",
         "--rm",
         "-v",
         "/path/to/your/data:/data",
+        "-p",
+        "3000:3000",
         "-e",
         "ACTUAL_PASSWORD=your-password",
         "-e",
@@ -191,8 +193,7 @@ Add the following to your configuration...
         "ACTUAL_BUDGET_SYNC_ID=your-budget-id",
         "sstefanov/actual-mcp:latest",
         "--enable-write"
-      ]
-      "args": ["run", "-it", "--rm", "-p", "3000:3000", "sstefanov/actual-mcp:latest"],
+      ],
       "env": {
         "ACTUAL_DATA_DIR": "/path/to/your/actual/data",
         "ACTUAL_PASSWORD": "your-password",
