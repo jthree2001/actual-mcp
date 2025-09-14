@@ -160,8 +160,7 @@ async function main(): Promise<void> {
   }
 
   if (!process.env.ACTUAL_ENC_PASSWORD) {
-    console.error('Note: ACTUAL_ENC_PASSWORD is not set.');
-    console.error('If your budget file is encrypted, initialization will fail.');
+    console.error('Warning: ACTUAL_ENC_PASSWORD is not set. This is required for encrypted budgets, and initialization will fail without it.');
   }
 
   if (useSse) {
