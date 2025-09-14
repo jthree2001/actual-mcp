@@ -130,7 +130,7 @@ On Windows:
 code %APPDATA%\Claude\claude_desktop_config.json
 ```
 
-Add the following to your configuration...
+Add the following to your configuration. `ACTUAL_ENC_PASSWORD` is required when the budget file is encrypted.
 
 ### a. Using Node.js (npx version):
 
@@ -144,7 +144,8 @@ Add the following to your configuration...
         "ACTUAL_DATA_DIR": "path/to/your/data",
         "ACTUAL_PASSWORD": "your-password",
         "ACTUAL_SERVER_URL": "http://your-actual-server.com",
-        "ACTUAL_BUDGET_SYNC_ID": "your-budget-id"
+        "ACTUAL_BUDGET_SYNC_ID": "your-budget-id",
+        "ACTUAL_ENC_PASSWORD": "your-budget-password"
       }
     }
   }
