@@ -52,7 +52,12 @@ export async function initActualApi(): Promise<void> {
     // Use specified budget or the first one
     const budgetId: string = process.env.ACTUAL_BUDGET_SYNC_ID || budgets[0].cloudFileId || budgets[0].id || '';
     console.error(`Loading budget: ${budgetId}`);
-    await api.downloadBudget(budgetId);
+    const budgetPassword = process.env.ACTUAL_ENC_PASSWORD;
+    if (budgetPassword) {
+      await api.downloadBudget(budgetId, { password: budgetPassword });
+    } else {
+      await api.downloadBudget(budgetId);
+    }
 
     initialized = true;
     console.error('Actual Budget API initialized successfully');

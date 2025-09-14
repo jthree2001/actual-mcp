@@ -130,7 +130,7 @@ On Windows:
 code %APPDATA%\Claude\claude_desktop_config.json
 ```
 
-Add the following to your configuration...
+Add the following to your configuration. `ACTUAL_ENC_PASSWORD` is required when the budget file is encrypted.
 
 ### a. Using Node.js (npx version):
 
@@ -138,13 +138,14 @@ Add the following to your configuration...
 {
   "mcpServers": {
     "actualBudget": {
-      "command": "node",
+      "command": "npx",
       "args": ["-y", "actual-mcp", "--enable-write"],
       "env": {
         "ACTUAL_DATA_DIR": "path/to/your/data",
         "ACTUAL_PASSWORD": "your-password",
         "ACTUAL_SERVER_URL": "http://your-actual-server.com",
-        "ACTUAL_BUDGET_SYNC_ID": "your-budget-id"
+        "ACTUAL_BUDGET_SYNC_ID": "your-budget-id",
+        "ACTUAL_ENC_PASSWORD": "your-budget-password"
       }
     }
   }
@@ -161,7 +162,8 @@ Add the following to your configuration...
       "env": {
         "ACTUAL_DATA_DIR": "path/to/your/data",
         "ACTUAL_PASSWORD": "your-password",
-        "ACTUAL_SERVER_URL": "http://your-actual-server.com",
+        "ACTUAL_SERVER_URL": "https://your-actual-server.com",
+        "ACTUAL_ENC_PASSWORD": "your-budget-password",
         "ACTUAL_BUDGET_SYNC_ID": "your-budget-id"
       }
     }
@@ -178,10 +180,12 @@ Add the following to your configuration...
       "command": "docker",
       "args": [
         "run",
-        "-i",
+        "-it",
         "--rm",
         "-v",
         "/path/to/your/data:/data",
+        "-p",
+        "3000:3000",
         "-e",
         "ACTUAL_PASSWORD=your-password",
         "-e",
@@ -190,7 +194,14 @@ Add the following to your configuration...
         "ACTUAL_BUDGET_SYNC_ID=your-budget-id",
         "sstefanov/actual-mcp:latest",
         "--enable-write"
-      ]
+      ],
+      "env": {
+        "ACTUAL_DATA_DIR": "/path/to/your/actual/data",
+        "ACTUAL_PASSWORD": "your-password",
+        "ACTUAL_ENC_PASSWORD": "your-budget-password",
+        "ACTUAL_SERVER_URL": "https://your-actual-server.com",
+        "ACTUAL_BUDGET_SYNC_ID": "your-budget-id"
+      }
     }
   }
 }
