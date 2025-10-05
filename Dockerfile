@@ -19,8 +19,7 @@ COPY --from=builder /app/package-lock.json ./
 COPY --from=builder /app/build ./build
 
 ENV NODE_ENV=production
-RUN TMPDIR=$(mktemp -d)
-ENV TMPDIR=$TMPDIR
+ENV TMPDIR=/tmp
 
 RUN npm ci --omit=dev
 
